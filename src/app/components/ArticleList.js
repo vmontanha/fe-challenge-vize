@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
 import { fetchRecentArticles } from '../../lib/api';
+import * as React from 'react';
 
 const Article = ({ article }) => (
   <div>
@@ -19,7 +20,6 @@ const ArticleList = () => {
   const { data: articles, mutate } = useSWR('src/pages/recente-articles/recent-articles.js', fetchRecentArticles);
 
   useEffect(() => {
-    // Força a atualização dos dados no lado do cliente após o carregamento no lado do servidor
     mutate();
   }, []);
 
